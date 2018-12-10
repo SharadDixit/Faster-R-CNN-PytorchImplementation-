@@ -16,7 +16,7 @@ class FasterRCNN(nn.Module):
         self.RCNNLossCls = 0
         self.RCNNLossBbox = 0
 
-        self.RCNNRpn = RPN(self.doutBaseModel)
+        self.RCNN_rpn = RPN(self.doutBaseModel)
         self.RCNNProposalTarget = ProposalTargetLayer(self.nClasses)
 
         self.RCNNRoiPool = RoIPooling(7, 7, 1.0 / 16.0)
@@ -38,11 +38,11 @@ class FasterRCNN(nn.Module):
 
     def initWeights(self):
 
-        self.normalInit(self.RCNNRpn.RPNConv, 0, 0.01, False)
-        self.normalInit(self.RCNNRpn.RPNClsScore, 0, 0.01, False)
-        self.normalInit(self.RCNNRpn.RPNBboxPred, 0, 0.01, False)
-        self.normalInit(self.RCNNClsScore, 0, 0.01, False)
-        self.normalInit(self.RCNNBboxPred, 0, 0.001, False)
+        self.normalInit(self.RCNNRpn.RPN_Conv, 0, 0.01, False)
+        self.normalInit(self.RCNNRpn.RPN_cls_score, 0, 0.01, False)
+        self.normalInit(self.RCNNRpn.RPN_bbox_pred, 0, 0.01, False)
+        self.normalInit(self.RCNN_cls_score, 0, 0.01, False)
+        self.normalInit(self.RCNN_bbox_pred, 0, 0.001, False)
 
     def createArchitecture(self):
         self.initModules()

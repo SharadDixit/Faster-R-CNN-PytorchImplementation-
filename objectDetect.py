@@ -13,7 +13,7 @@ if __name__ == '__main__':
                                  'motorbike', 'person', 'pottedplant',
                                  'sheep', 'sofa', 'train', 'tvmonitor'])
 
-    checkpoint = torch.load('vgg16_caffe.pth', map_location=(lambda storage, loc: storage))
+    checkpoint = torch.load('faster_rcnn_1_6_10021.pth', map_location=(lambda storage, loc: storage))
     print(checkpoint)
 
     fasterRCNN = VGG16(pascalClasses)
